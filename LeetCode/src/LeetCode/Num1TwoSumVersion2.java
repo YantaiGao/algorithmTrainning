@@ -9,7 +9,7 @@ public class Num1TwoSumVersion2 {
 		int[] nums = {2,3,7};
 		int target = 5;
 		int[] res = twoSum(nums,target);
-		for (int i : res) {
+		for (int i : res) { 
 			System.out.print(i + "\t");
 		}
 	}
