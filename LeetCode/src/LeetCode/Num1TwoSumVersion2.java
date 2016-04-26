@@ -9,11 +9,10 @@ public class Num1TwoSumVersion2 {
 		int[] nums = {2,3,7};
 		int target = 5;
 		int[] res = twoSum(nums,target);
-		for (int i : res) { 
+		for (int i : res) {
 			System.out.print(i + "\t");
 		}
 	}
-
 	private static int[] twoSum(int[] nums, int target) {
 		int[] result = new int[2];
 		Map<Integer, Integer> hashMap = new HashMap<Integer,Integer>();
@@ -27,5 +26,4 @@ public class Num1TwoSumVersion2 {
 		}
 		return result;
 	}
-
 }
