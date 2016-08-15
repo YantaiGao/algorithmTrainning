@@ -2,8 +2,6 @@ package offer_aimTo;
 
 import java.util.Arrays;
 
-import javax.swing.text.AbstractDocument.LeafElement;
-
 public class Ch02_RebulitTwoBinTree {
 	/**
 	 * 目标：通过给定的前根遍历和中根遍历，重建二叉树
@@ -22,6 +20,7 @@ public class Ch02_RebulitTwoBinTree {
 	/**
 	 * 目标：
 	 * 根据先根遍历中第一个节点，找到根，然后去中序中找到index,则index前的是左子树，后的是右子树
+	 * 注意结束条件的处理：
 	 * @param preOrderArr
 	 * @param inOrderArr
 	 */
