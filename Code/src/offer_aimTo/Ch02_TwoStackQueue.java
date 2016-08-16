@@ -26,7 +26,8 @@ public class Ch02_TwoStackQueue {
 		//方法二：
 		String[] strArr = {"A","B","C","D"};
 		String[] strArr2 = {"E","F"};
-		Stack<String> stack1 = queue.InQueue(strArr);
+		Stack<String> stack1 = new Stack<>();
+		queue.InQueue(stack1,strArr);
 		Stack<String> stack2 = new Stack<String>();
 		queue.DeQueue(stack1,stack2);
 		queue.InQueue(strArr2);
@@ -57,25 +58,24 @@ public class Ch02_TwoStackQueue {
 		System.out.println();
 	}
 
-	private <T> Stack<T> inQueue(T[] queueElement) {
-		Stack<T> stack = new Stack<T>();
+	private <T> Stack<T> inQueue(Stack<T> originStack,T[] queueElement) {
 		Stack<T> tempStack = new Stack<T>();
 		if (queueElement.length > 0) {
 			for (T t : queueElement) {
-				while (!stack.isEmpty()) {
+				while (!originStack.isEmpty()) {
 					//全部出栈，压入暂时栈
-					T popT = stack.pop();
+					T popT = originStack.pop();
 					tempStack.push(popT);
 				}
 				//新元素入栈
-				stack.push(t);
+				originStack.push(t);
 				//所有temp中元素出栈，压入stack中
 				while (!tempStack.isEmpty()) {
 					T tempT = tempStack.pop();
-					stack.push(tempT);
+					originStack.push(tempT);
 				}
 			}
-			return stack;
+			return originStack;
 		}
 		return null;
 	}
