@@ -23,6 +23,7 @@ public class Ch02_TwoStackQueue {
 		Ch02_TwoStackQueue queue = new Ch02_TwoStackQueue();
 		Stack<Integer> stack = queue.inQueue(queueElement);
 		queue.outQueue(stack);
+		queue.printQueue(stack);
 		//方法二：
 		String[] strArr = {"A","B","C","D"};
 		String[] strArr2 = {"E","F"};
@@ -34,10 +35,43 @@ public class Ch02_TwoStackQueue {
 		queue.DeQueue(stack1,stack2);
 		//入队
 		queue.InQueue(stack1,strArr2);
-		System.out.println("打印队列中元素：");
-		queue.printQueue(stack1);
+		
+		queue.printQueue(stack1,stack2);
+		//出队
+		queue.DeQueue(stack1,stack2);
+		queue.DeQueue(stack1,stack2);
+		queue.DeQueue(stack1,stack2);
+		queue.DeQueue(stack1,stack2);
+		queue.DeQueue(stack1,stack2);
+		queue.DeQueue(stack1,stack2);
 		System.out.println();
-		queue.printQueue(stack2);
+		queue.printQueue(stack1,stack2);
+		
+	}
+
+	/**
+	 * 对于法二遍历队列的时候，两个栈都应该遍历
+	 * @param stack1
+	 * @param stack2
+	 */
+	private <T> void printQueue(Stack<T> stack1, Stack<T> stack2) {
+		System.out.println("打印队列中元素：");
+		if (stack1 != null) {
+			for (T t : stack1) {
+				System.out.print(t + "\t");
+			}
+
+		}
+		System.out.println();		
+		if (stack2 != null) {
+			for (T t : stack2) {
+				System.out.print(t + "\t");
+			}
+		}	
+		
+		if (stack1.isEmpty() && stack2.isEmpty()) {
+			System.out.println("空队列。");
+		}
 	}
 
 
@@ -45,9 +79,13 @@ public class Ch02_TwoStackQueue {
 	 * 栈可以使用集合的方式遍历
 	 * @param stack2
 	 */
-	private void printQueue(Stack<String> stack2) {
-		for (String string : stack2) {
-			System.out.print(string + "\t");
+	private <T> void printQueue(Stack<T> stack) {
+		if (stack != null) {
+			for (T t : stack) {
+				System.out.print(t + "\t");
+			}
+		}else {
+			System.out.println("空队列。");
 		}
 	}
 
