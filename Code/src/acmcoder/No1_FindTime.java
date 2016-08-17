@@ -1,4 +1,7 @@
 package acmcoder;
+
+import java.util.Scanner;
+
 /**
  * 手机被锁：密码是一个数字
  * 信息是：是一个从l（L不是1）到r的十进制整数，它的二进制有m个1
@@ -13,12 +16,16 @@ package acmcoder;
 public class No1_FindTime {
 
 	public static void main(String[] args) {
-		int l,r,m;
-		int res;
+		int l=0,r=0,m=0;
+		int res=0;
 		
-		l = 1;
-		r = 4;
-		m = 2;
+		Scanner scanner = new Scanner(System.in);
+		
+		if (scanner.hasNext()) {
+			l = scanner.nextInt();
+			r = scanner.nextInt();
+			m = scanner.nextInt();
+		}
 		
 		No1_FindTime find = new No1_FindTime();
 		
