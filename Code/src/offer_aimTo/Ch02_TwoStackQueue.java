@@ -27,11 +27,16 @@ public class Ch02_TwoStackQueue {
 		String[] strArr = {"A","B","C","D"};
 		String[] strArr2 = {"E","F"};
 		Stack<String> stack1 = new Stack<>();
+		//入队
 		queue.InQueue(stack1,strArr);
 		Stack<String> stack2 = new Stack<String>();
+		//出队
 		queue.DeQueue(stack1,stack2);
-		queue.InQueue(strArr2);
+		//入队
+		queue.InQueue(stack1,strArr2);
+		System.out.println("打印队列中元素：");
 		queue.printQueue(stack1);
+		System.out.println();
 		queue.printQueue(stack2);
 	}
 
@@ -52,30 +57,34 @@ public class Ch02_TwoStackQueue {
 	 * @param stack
 	 */
 	private <T> void outQueue(Stack<T> stack) {
+		if (stack.isEmpty()) {
+			System.out.println("队列为空，没有元素出队");			
+		}
 		while (!stack.isEmpty()) {
 			System.out.print(stack.pop() + "\t");
 		}
 		System.out.println();
 	}
 
-	private <T> Stack<T> inQueue(Stack<T> originStack,T[] queueElement) {
+	private <T> Stack<T> inQueue(T[] queueElement) {
+		Stack<T> stack = new Stack<T>();
 		Stack<T> tempStack = new Stack<T>();
 		if (queueElement.length > 0) {
 			for (T t : queueElement) {
-				while (!originStack.isEmpty()) {
+				while (!stack.isEmpty()) {
 					//全部出栈，压入暂时栈
-					T popT = originStack.pop();
+					T popT = stack.pop();
 					tempStack.push(popT);
 				}
 				//新元素入栈
-				originStack.push(t);
+				stack.push(t);
 				//所有temp中元素出栈，压入stack中
 				while (!tempStack.isEmpty()) {
 					T tempT = tempStack.pop();
-					originStack.push(tempT);
+					stack.push(tempT);
 				}
 			}
-			return originStack;
+			return stack;
 		}
 		return null;
 	}
@@ -84,9 +93,8 @@ public class Ch02_TwoStackQueue {
 	 * 思路2：
 	 * 入栈的时候直接入栈就可以
 	 */
-	private <T> Stack<T> InQueue(T[] queueElement) {
+	private <T> Stack<T> InQueue(Stack<T> stack,T[] queueElement) {
 		if (queueElement.length > 0) {
-			Stack<T> stack = new Stack<T>();
 			for (T t : queueElement) {
 				stack.push(t);	
 			}
@@ -96,6 +104,7 @@ public class Ch02_TwoStackQueue {
 	}
 	/**
 	 * 出队
+	 * 注意考虑：队为空的情况！！！
 	 * @param stack1
 	 * @param string
 	 */
@@ -104,13 +113,17 @@ public class Ch02_TwoStackQueue {
 			//非空直接出栈
 			stack2.pop();
 		}else {
-			//stack2 == null,将stack1中所有元素出栈，压入stack2中
-			while (!stack1.isEmpty()) {
-				T item = stack1.pop();
-				stack2.push(item);
+			if (stack1.isEmpty()) {
+				System.out.println("队列为空，无元素出栈。");
+			}else {
+				//stack2 == null,将stack1中所有元素出栈，压入stack2中
+				while (!stack1.isEmpty()) {
+					T item = stack1.pop();
+					stack2.push(item);
+				}
+				//然后出栈
+				stack2.pop();
 			}
-			//然后出栈
-			stack2.pop();
 		}
 	}
 	
