@@ -25,22 +25,33 @@ public class No_1ChaRuSort {
 		for (int i : a) {
 			System.out.print(i + "\t");
 		}
+		
 	}
 
 	private int[] charuSort(int[] a) {
 		
-		//从第二个元素依次插入有序数组
-		for (int i = 1; i < a.length-1; i++) {
-			//每次从后向前找位置
-			for (int j = i; j < 0; j--) {
-				if (a[i] < a[j]) {
+		if (a == null || a.length < 2) {
+			return a;
+		}
+		
+		//从第二个元素依次插入有序数组	注意：i的序号是从1到小于等于a.length-1（注意：有-1所以等于号）,使用<length就可以
+		//for (int i = 1; i <= a.length-1; i++) {
+		for (int i = 1; i < a.length; i++) {
+			//每次从后向前找位置——注意这个找位置的过程——j = i 与前一个数j-1比
+			for (int j = i; j > 0; j--) {
+				if (a[j-1] > a[j]) {
 					int temp = a[j];
-					a[j] = a[i];
-					a[i] = temp;
+					a[j] = a[j-1];
+					a[j-1] = temp;
+				}else {
+					//若是已经小于，则不需要继续向前比较
+					break;
 				}
 			}
 		}
+		
 		return a;
+		
 	}
 
 }
