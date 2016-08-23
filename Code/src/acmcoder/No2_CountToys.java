@@ -68,50 +68,105 @@ public class No2_CountToys {
 		int roundLen = 0;
 		//一个玩具
 		if (n==1 && m==1) {
-			infactNum = 0;
+			
+			infactNum = 1;
 			roundLen = 1;
+			
 		}else {
+			
 			//除了n=1之外，一个轮回长度
 			roundLen = 2*n-2;
+			
 			//首尾数1，或者n在一个轮回中只出现一次，首次序号就是m
+			
 			if (m == 1 || m == n) {
+				
 				//roundOne轮回中只有一个数字，infactNum = m
 				//roundOne中序号是m
 				infactNum = m;
+				
 			}else {
+				
 				infactNum = m;
 				indexTwo = n + (n-m);
+				
 			}
 		}
 		
 		while (temp != k) {
 			//数字1需要单独处理
 			if(n == 1 && m == 1){
+				
 				//符合条件
 				if (infactNum % 7 == 0 || new Integer(infactNum).toString().indexOf("7") >= 0) {
 					temp++;
 				}
-				infactNum = infactNum + roundLen;
+				
+				//可能最后一步已经等于k，再加就不对了
+				if (temp != k) {
+					infactNum = infactNum + roundLen;	
+				}
+				
 			}else if (m == 1 || m == n) {
+				
 				//roundOne轮回中只有一个数字，infactNum = m
+				//由于infactNum初始值在前边已经区分，所以这个和 n==1 && m==1是一样的 
 				//符合条件
 				if (infactNum % 7 == 0 || new Integer(infactNum).toString().indexOf("7") >= 0) {
 					temp++;
 				}
-				infactNum = infactNum + roundLen;
+				
+				//可能最后一步已经等于k，再加就不对了
+				if (temp != k) {
+					infactNum = infactNum + roundLen;
+				}
+
 			}else {
 				//一个玩具在一个roundOne中出现两次，两次都要判断
 				//符合条件
-				if (infactNum % 7 == 0 || new Integer(infactNum).toString().indexOf("7") >= 0) {
+				if (contains7(infactNum)) {
 					temp++;
 				}
-				infactNum = infactNum + roundLen;
-				if (indexTwo % 7 == 0 || new Integer(indexTwo).toString().indexOf("7") >= 0) {
+				//可能最后一步已经等于k，再加就不对了
+				if (temp == k) {
+					return infactNum;
+				}else {
+					infactNum = infactNum + roundLen;
+				}
+				
+				if (contains7(indexTwo)) {
 					temp++;
 				}
-				indexTwo = indexTwo + roundLen;
+				//可能最后一步已经等于k，再加就不对了
+				if (temp == k) {
+					return indexTwo;
+				}else {
+					indexTwo = indexTwo + roundLen;
+				}
 			}
 		}
+		
 		return infactNum;
+		
+	}
+	/**
+	 * 最开始使用这种方法：
+	 * 	indexTwo % 7 == 0 || new Integer(indexTwo).toString().indexOf("7") >= 0
+	 *  略不符合常规
+	 * @param infactNum
+	 * @return
+	 */
+	private boolean contains7(int infactNum) {
+		if (infactNum % 7 == 0) {
+			return true;
+		}else {
+			while (infactNum != 0) {
+				if (infactNum % 10 == 7) {
+					return true;
+				}
+				infactNum = infactNum / 10;
+			}
+		}
+		return false;
 	}
 }
