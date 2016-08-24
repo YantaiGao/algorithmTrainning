@@ -5,6 +5,9 @@ import java.util.Arrays;
 public class Ch02_RebulitTwoBinTree {
 	/**
 	 * 目标：通过给定的前根遍历和中根遍历，重建二叉树
+	 * 
+	 * 注意：这个程序现在有问题，尚未处理完，需要进一步处理
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {

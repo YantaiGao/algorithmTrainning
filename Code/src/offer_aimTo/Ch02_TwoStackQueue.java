@@ -7,10 +7,12 @@ public class Ch02_TwoStackQueue {
 	 * 目标：使用两个栈实现队列
 	 * 思路：
 	 * (1):
+	 * 太麻烦
 	 * Stack1、Stack2
 	 * 每新来一个元素，要入栈，则将所有Stack1中元素出栈到temp stack Stack2中，然后将新元素T 压入栈Stack1，然后将Stack2中所有的元素出栈入到Stack1中
 	 * 
 	 * (2):
+	 * 可取！！！
 	 * 插入的时候就入栈Stack1；
 	 * 删除队首元素的时候，就先判断Stack2是否为空，
 	 * 		为空，将Stack1中元素全部出栈，压入Stack2，然后Stack2出栈一个删除，
