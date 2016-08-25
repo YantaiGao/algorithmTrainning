@@ -8,16 +8,18 @@ public class Ch02_QuickSortPartionForKstMax {
 	 */
 	public static void main(String[] args) {
 		int[] a = {12,243,53,6,89,1234,4,10,234};
-		int k = 3;
+		int k = 5;
 		int res;
 		Ch02_QuickSortPartionForKstMax kThMax = new Ch02_QuickSortPartionForKstMax();
+		//现在找的是第k小，而且应该使用k-1
 		res = kThMax.findTheKthMax(a,0,a.length-1,k);
 		System.out.println("第" + k +"大的数是：" + res);
 	}
 
 	private int findTheKthMax(int[] a, int left, int right, int k) {
-		int p = partition(a,left,right);
+		int p = 0;
 		if (p != k) {
+			p = partition(a,left,right);
 			if (p < k) {
 				findTheKthMax(a, p+1, right, k-p);
 			}else {

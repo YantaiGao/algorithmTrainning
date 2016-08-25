@@ -21,7 +21,10 @@ public class No_3QuickSort {
 	public static void main(String[] args) {
 		int[] a = {49,38,65,97,76,13,27,49};
 		int left = 0;
+		
+		//×¢Òâ£ºrightÊÇlen-1
 		int right = a.length-1;
+		
 		quickSort(a,left,right);
 		for (int i : a) {
 			System.out.print(i + "\t");
