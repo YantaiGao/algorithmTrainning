@@ -22,6 +22,8 @@ public class No_3UpStairs {
 	 * 只有这两种选择，则上m个台阶的总方法数，
 	 * 即f(n) = f(n-1) + f(n-2)
 	 * 
+	 * 存在的问题：当台阶数达到46以上甚至50 的时候，算法将会越来越慢
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
