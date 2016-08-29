@@ -2,7 +2,7 @@ package acmcoder;
 
 import java.util.Scanner;
 
-public class No_3UpStairs {
+public class No3_UpStairs {
 	/**
 	 * 一个楼梯共m个台阶，每次能上一个或者两个台阶，要走m个台阶，一共有多少种走法
 	 * 
@@ -30,7 +30,7 @@ public class No_3UpStairs {
 		int groupNum,m,res;
 		Scanner sc = new Scanner(System.in);
 		groupNum = sc.nextInt();
-		No_3UpStairs upStairs = new No_3UpStairs();
+		No3_UpStairs upStairs = new No3_UpStairs();
 		for (int i = 0; i < groupNum; i++) {
 			m = sc.nextInt();
 			res = upStairs.computeMethodsNum(m);
