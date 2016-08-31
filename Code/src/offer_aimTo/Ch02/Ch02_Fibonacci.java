@@ -1,4 +1,4 @@
-package offer_aimTo;
+package offer_aimTo.Ch02;
 
 /**
  * 求：斐波那契数列第n项,或者打印前n项
