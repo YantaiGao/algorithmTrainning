@@ -1,7 +1,11 @@
 package Ds.heapSort;
 
 import java.util.Arrays;
-
+/**
+ * 这个在思路上没啥问题，但是在排序的时候采取的策略并不好，不完全符合堆排序的时空复杂度，因此，参看No_5HeapSort
+ * @author Administrator
+ *
+ */
 public class HeapSortTest {
 
 	public static void main(String[] args) {
