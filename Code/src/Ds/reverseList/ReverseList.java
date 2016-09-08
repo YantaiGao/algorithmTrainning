@@ -1,5 +1,12 @@
 package Ds.reverseList;
-
+/**
+ * 逆转单链表：
+ * 思路：
+ * 将 head 的 next 置为空，然后将以后的每个元素挨个放到 head 的前面
+ * 
+ * @author Administrator
+ *
+ */
 public class ReverseList {
 
 	public static void main(String[] args) {
