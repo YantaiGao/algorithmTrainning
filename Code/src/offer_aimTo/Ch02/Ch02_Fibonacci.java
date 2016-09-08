@@ -69,6 +69,7 @@ public class Ch02_Fibonacci {
 	/**
 	 * 优化1：
 	 * 避免从上到下的重复计算，从下到上计算
+	 * 非递归实现即是这样
 	 * 时间复杂度o(n)
 	 * @param n
 	 * @return
