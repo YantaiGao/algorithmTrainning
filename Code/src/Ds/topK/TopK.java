@@ -23,6 +23,47 @@ public class TopK {
 
 	public static void main(String[] args) {
 		
+		int[] arr = {30,4,5,23,8,12,44,89,123,432};
+		int k = 3;
+		int[] res = getTopKByHeap(arr,k);
+		
+		System.out.println("Top " + k + "情况如下：");
+		
+		for (int i : res) {
+			System.out.print(i + "\t");
+		}
+		
+	}
+
+	private static int[] getTopKByHeap(int[] arr, int k) {
+		
+		//创建一个K的小根堆
+		int[] heap = createHeap(arr,k);
+		
+		for (int i = k; i < arr.length; i++) {
+			if (arr[i]>heap[0]) {
+				insert(heap,arr[i]);
+			}
+		}
+		return null;
+	}
+	/**
+	 * 依次将元素插入到堆中
+	 * @param heap
+	 * @param i
+	 */
+	private static void insert(int[] heap, int i) {
+		
+	}
+
+	/**
+	 * 创建一个大小为k的堆
+	 * @param arr
+	 * @param k
+	 * @return
+	 */
+	private static int[] createHeap(int[] arr, int k) {
+		return null;
 	}
 
 }
