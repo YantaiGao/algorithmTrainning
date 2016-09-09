@@ -25,7 +25,7 @@ public class HalfNumOfArr {
 
 	public static void main(String[] args) {
 		
-		int[] arr = {3,1,2,3,4,5,3,2,3,2,3,4,3,3,1,3,};
+		int[] arr = {3,1,2,3,4,5,3,2,3,2,3,4,3,3,1,3,3};
 		
 		int[] arr1 = {1,2,3};//这是一个bug案例，若是直接使用count!=0来判断，可能就会出错
 		
