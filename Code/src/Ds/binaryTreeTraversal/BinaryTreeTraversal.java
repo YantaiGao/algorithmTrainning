@@ -1,6 +1,7 @@
 package Ds.binaryTreeTraversal;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class BinaryTreeTraversal {
@@ -37,7 +38,13 @@ public class BinaryTreeTraversal {
 		System.out.println("递归后根遍历：");
 		btreeT.postOrderTraver(root);
 		
+		System.out.println();//分割行
+		
+		System.out.println("非递归先根遍历：");
+		btreeT.postOrderTraverNoDG(root);
+//		
 		System.out.println();//分隔行
+		System.out.println();
 		
 		//使用int值的树进行测试
 		ArrayList<Node<Integer>> intNodesList = new ArrayList<Node<Integer>>();
@@ -55,6 +62,37 @@ public class BinaryTreeTraversal {
 		btreeT.postOrderTraver(intRoot);
 				
 	}
+	/**
+	 * 非递归先序遍历
+	 * 2016-10-28
+	 * @param root
+	 */
+	private <T> void postOrderTraverNoDG(Node<T> root) {
+		
+		if (root == null) {
+			return;
+		}
+		
+		LinkedList<Node<T>> stack = new LinkedList<>();
+		Node<T> current = null;
+		stack.push(root);
+		
+//		while (stack != null) {		//两次了 注意！！！栈非空怎么判断！！！
+		while (!stack.isEmpty()) {
+			
+			current = stack.pop();
+			System.out.print(current.data + "-");
+			//注意一定要先入栈右孩子！
+			if (current.rightNode != null) {
+				stack.push(current.rightNode);
+			}
+			if (current.leftNode != null) {
+				stack.push(current.leftNode);
+			}
+		}
+		
+	}
+	
 	private <T> void postOrderTraver(Node<T> root) {
 		if (root == null) {
 			return;
